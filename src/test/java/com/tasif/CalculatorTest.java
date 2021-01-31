@@ -7,8 +7,19 @@ import org.junit.Test;
 public class CalculatorTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	public void addTest() {
+		Calculator calculator = new Calculator();
 
+		String expression = "10,20,30";
+		String[] numbers = calculator.splitExpression(expression);
+
+		boolean expectedValidate = true;
+		boolean actualValidate = calculator.validateNumber(numbers);
+		assertEquals(expectedValidate, actualValidate);
+
+		int[] actualNumbers = calculator.numericConvert(numbers);
+		int expectedSum = 60;
+		int actualSum = calculator.add(actualNumbers);
+		assertEquals(expectedSum, actualSum);
+	}
 }
